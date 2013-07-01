@@ -4,6 +4,12 @@ action :delete do
   end
 end
 
+action :clean do
+  file "/etc/cron.d/*" do
+    action :delete
+  end
+end
+
 action :create do
   t = template "/etc/cron.d/#{new_resource.name}" do
     cookbook new_resource.cookbook
